@@ -2,6 +2,7 @@ import { FilterStream } from './filter-stream.js';
 
 // Ideally we'd use an editor or import shaders directly from the API.
 import { distortedTV as shader } from './distorted-tv.js';
+import { VideoStream } from './video-stream.js';
 //import { moneyFilter as shader } from './money-filter.js';
 
 function monkeyPatchMediaDevices() {
@@ -46,7 +47,7 @@ function monkeyPatchMediaDevices() {
           constraints
         );
         if (res) {
-          const filter = new FilterStream(res, shader);
+          const filter = new VideoStream(res);
           return filter.outputStream;
         }
       }
